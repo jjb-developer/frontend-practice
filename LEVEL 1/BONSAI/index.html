@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="iconjs.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src='./tailwindcss.js'></script>
+<title>Bonsai - Pricing (Clone Practice Frontend)</title>
+
+<!-- Font Google -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Style Tailwindcss -->
+<style type='text/tailwindcss'>
+body {
+  @apply select-none h-full w-full text-zinc-900 bg-zinc-50 text-[0.9rem]
+}
+nav {
+	@apply block md:flex md:items-center sm:justify-between py-3 shadow-sm px-[4%] lg:px-[8%] border-b-2
+}
+#boxNav {
+	@apply text-[2rem] text-emerald-500 uppercase font-bold tracking-tighter flex items-center justify-between pb-3 shadow-sm md:py-0 md:shadow-none
+}
+#boxNav #logo {
+	@apply flex items-center gap-x-2
+}
+#boxNav #logo svg {
+	@apply fill-emerald-800
+}
+#boxNav #imenu {
+	@apply cursor-pointer block fill-emerald-500 md:hidden
+}
+#enlaces {
+	@apply text-[1rem] capitalize flex flex-col md:flex-row md:gap-x-5
+}
+#enlaces a {
+	@apply py-4 border-b-2 border-zinc-100 md:border-0 md:py-0 hover:text-emerald-600 duration-200
+}
+#botones {
+	@apply flex justify-center gap-x-3 pt-4 md:justify-start md:pt-0
+}
+.btn {
+	@apply text-xs uppercase font-bold py-1.5 px-5 rounded duration-200
+}
+.light {
+	@apply border border-emerald-200 text-emerald-500 hover:bg-emerald-100 hover:text-emerald-600
+}
+.dark {
+	@apply bg-emerald-500 text-zinc-50 hover:bg-emerald-600
+}
+header {
+	@apply px-[8%] md:px-[12%] py-16
+}
+header #title {
+	@apply flex flex-col gap-y-3 items-center sm:flex-row sm:justify-between
+}
+header #title h2 {
+	@apply text-[1.75rem] capitalize font-medium tracking-tighter
+}
+header #title div {
+	@apply uppercase font-medium text-zinc-500 text-[0.85rem] flex items-center gap-x-3
+}
+header #title div > div label {
+	@apply w-12 h-7 relative rounded-full bg-emerald-500 cursor-pointer before:absolute before:w-6 before:h-6 before:bg-zinc-50 before:rounded-full before:top-[50%] before:translate-y-[-50%] before:left-0.5
+}
+header #title div > div input {
+	@apply hidden
+}
+header #cards {
+	@apply py-10 flex justify-center flex-wrap gap-7
+}
+.card {
+	@apply border-2 rounded-md w-96 shadow-sm p-10
+}
+.card h5 {
+	@apply text-[1.4rem] font-medium
+}
+.card h6 {
+	@apply text-6xl font-semibold border-b-2 border-emerald-500 py-6
+}
+.card span {
+	@apply text-2xl font-light
+}
+.card ul {
+	@apply mt-6
+}
+.card ul li {
+	@apply py-1.5 flex gap-x-2 items-center
+}
+.card ul li svg{
+	@apply fill-emerald-500 w-4
+}
+svg#x {
+	@apply fill-red-500
+}
+.card button {
+	@apply bg-emerald-500 w-full mt-5 py-4 rounded uppercase font-bold text-zinc-50 duration-200 hover:bg-emerald-600
+}
+#addons {
+	@apply px-[8%] md:px-[12%] pb-4
+}
+#addons > h5 {
+	@apply capitalize text-[1.4rem] font-medium tracking-tight text-center
+}
+#addons ul {
+	@apply mt-20 flex flex-col gap-y-4 text-zinc-600
+}
+.addon {
+	@apply px-[4.5%] py-[3.5%] rounded flex justify-between items-center gap-x-3 shadow
+}
+.addon > div:first-child {
+	@apply w-[80%]
+}
+.addon > div:first-child h5 {
+	@apply text-lg font-medium
+}
+.addon > div:first-child p {
+	@apply text-zinc-400
+}
+.addon > div:last-child {
+	@apply flex flex-col w-[20%] text-right
+}
+.addon > div:last-child strong {
+	@apply text-2xl font-medium text-emerald-500
+}
+.addon > div:last-child span {
+	@apply text-xs uppercase
+}
+#frase {
+	@apply mt-16 mx-auto w-[84%] h-64 bg-emerald-50 flex flex-col items-center justify-center text-center gap-y-8 md:w-[76%] md:flex-row md:justify-around md:text-left
+}
+#frase div {
+	@apply text-[1.75rem] text-zinc-600
+}
+#frase div p > span {
+	@apply text-emerald-500
+}
+#frase button {
+	@apply text-xs uppercase font-bold py-5 px-12 rounded duration-200 bg-emerald-500 text-zinc-50 hover:bg-emerald-600
+}
+#ask {
+	@apply mt-8 mx-auto pt-8 w-[84%] flex flex-col md:w-[76%]
+}
+#ask h5 {
+	@apply capitalize text-[1.45rem] font-medium tracking-tight text-center text-emerald-500
+}
+#ask ul {
+	@apply mt-10 flex flex-col gap-y-4 text-[1.25rem] px-[5%] sm:px-[15%] text-zinc-700
+}
+#ask ul li div {
+	@apply flex justify-between
+}
+#ask ul li div svg {
+	@apply fill-zinc-400 cursor-pointer duration-200
+}
+#ask ul li p {
+	@apply text-[1rem] p-4 text-zinc-500
+}
+footer div:first-child {
+	@apply capitalize mt-8 py-24 mx-auto w-[84%] flex flex-col gap-y-16 md:flex-row md:justify-between md:gap-x-8 md:w-[76%]
+}
+footer div section {
+	@apply flex flex-col gap-y-8
+}
+footer div section h6 {
+	@apply text-[0.95rem] uppercase font-medium text-zinc-700
+}
+footer div section ul {
+	@apply flex flex-col gap-y-1.5
+}
+footer div section li {
+	@apply flex items-center gap-x-1 text-zinc-500 text-[0.85rem] cursor-pointer duration-200  hover:text-emerald-500
+}
+footer div section li svg {
+	@apply fill-zinc-400
+}
+footer div:last-child {
+	@apply flex flex-col items-center bg-emerald-500 py-10 px-[8%] gap-y-4 sm:flex-row sm:justify-between md:px-[12%] text-[0.85rem] font-medium text-emerald-800
+}
+footer div:last-child ul {
+	@apply flex gap-x-4
+}
+footer div:last-child span {
+	@apply bg-emerald-600 duration-200 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-emerald-800
+}
+footer div:last-child svg {
+	@apply fill-zinc-50
+}
+</style>
+</head>
+
+<body style="font-family: 'Rubik', sans-serif;">
+  	<div id='contain'>
+  	<!-- Navbar -->
+	  	<nav>
+	  		<div id='boxNav'>
+	  			<div id='logo'>
+		  			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M21.993 7.95a.96.96 0 0 0-.029-.214c-.007-.025-.021-.049-.03-.074-.021-.057-.04-.113-.07-.165-.016-.027-.038-.049-.057-.075-.032-.045-.063-.091-.102-.13-.023-.022-.053-.04-.078-.061-.039-.032-.075-.067-.12-.094-.004-.003-.009-.003-.014-.006l-.008-.006-8.979-4.99a1.002 1.002 0 0 0-.97-.001l-9.021 4.99c-.003.003-.006.007-.011.01l-.01.004c-.035.02-.061.049-.094.073-.036.027-.074.051-.106.082-.03.031-.053.067-.079.102-.027.035-.057.066-.079.104-.026.043-.04.092-.059.139-.014.033-.032.064-.041.1a.975.975 0 0 0-.029.21c-.001.017-.007.032-.007.05V16c0 .363.197.698.515.874l8.978 4.987.001.001.002.001.02.011c.043.024.09.037.135.054.032.013.063.03.097.039a1.013 1.013 0 0 0 .506 0c.033-.009.064-.026.097-.039.045-.017.092-.029.135-.054l.02-.011.002-.001.001-.001 8.978-4.987c.316-.176.513-.511.513-.874V7.998c0-.017-.006-.031-.007-.048zm-10.021 3.922L5.058 8.005 7.82 6.477l6.834 3.905-2.682 1.49zm.048-7.719L18.941 8l-2.244 1.247-6.83-3.903 2.153-1.191zM13 19.301l.002-5.679L16 11.944V15l2-1v-3.175l2-1.119v5.705l-7 3.89z"/></svg>
+		  			<a href="#">bonsai</a>
+		  		</div>
+	  			<svg id='imenu' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+	  		</div>
+	  		<div id='navegation' class='h-0 overflow-hidden duration-300 md:h-full'>
+		  		<ul id='enlaces'>
+		  			<a href="#">home</a>
+		  			<a href="#">templates</a>
+		  			<a href="#">pricing</a>
+		  			<a href="#">reviews</a>
+		  		</ul>
+	  		</div>
+	  		<div id='botones'>
+	  			<a href="#" class='btn light'>login in</a>
+	  			<a href="#" class='btn dark'>start free</a>
+	  		</div>
+	  	</nav>
+	<!-- Header -->
+		<header>
+			<section id='title'>
+				<h2>plans & pricing</h2>
+				<div>
+					<span>monthly</span>
+					<div>
+						<label for='buy'></label>
+						<input type="checkbox" id='buy'>
+					</div>
+					<span>yearly</span>
+				</div>
+			</section>
+			<section id='cards'>
+			<!-- card 1 -->
+				<div class='card'>
+					<h5>Workflow</h6>
+					<h6 class='flex'><span class='self-center pr-2'>$</span>19<span class='self-end'>/month</span></h6>
+					<ul>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Invoicing & Payments</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Proposal & Contracts</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Scheduling</li>
+						<li><svg id='x' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"/></svg>Client CRM</li>
+						<li><svg id='x' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"/></svg>Expense Tracking</li>
+						<li><svg id='x' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"/></svg>Up to 5 Project Collaborators</li>
+					</ul>
+					<button>start free</button>
+				</div>
+			<!-- card 2 -->
+				<div class='card'>
+					<h5>Workflow Plus</h6>
+					<h6 class='flex'><span class='self-center pr-2'>$</span>29<span class='self-end'>/month</span></h6>
+					<ul>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Invoicing & Payments</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Proposal & Contracts</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Scheduling</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Client CRM</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Expense Tracking</li>
+						<li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"/></svg>Up to 5 Project Collaborators</li>
+					</ul>
+					<button>start free</button>
+				</div>
+			</section>
+		</header>
+		<section id='addons'>
+			<h5>super charge your work with add-ons</h5>
+			<ul>
+				<li class='addon'>
+					<div>
+						<h5>Collaborators</h5>
+						<p>Invite other users to specific projects for limited access and functionality.</p>
+					</div>
+					<div>
+						<strong>Free</strong>
+					</div>
+				</li>
+				<li class='addon'>
+					<div>
+						<h5>Partners</h5>
+						<p>Invite other users for full account access and company management.</p>
+					</div>
+					<div>
+						<strong>$9</strong>
+						<span>/month</span>
+					</div>
+				</li>
+				<li class='addon'>
+					<div>
+						<h5>Tax Assistant</h5>
+						<p>Track expenses, identify write-offs, and estimate quarterly taxes easily.</p>
+					</div>
+					<div>
+						<strong>$10</strong>
+						<span>/month</span>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section id='frase'>
+			<div>
+				<p>It's <span>your</span> business.</p>
+				<p>we're here to help it grow.</p>
+			</div>
+			<button>start free</button>
+		</section>
+		<section id='ask'>
+			<h5>Frequently asked questions</h5>
+			<ul>
+				<li>
+					<div>
+						<a href="#">How does the free trial work?</a>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+					</div>
+					<p class='hidden'>When you start your trial with Bonsai you'll receive full, unlimited access to the plan you chose. You will need to enter your credit card information to begin your trial, but don't worry - we won't charge you anything until the trial ends. You can cancel at any time during the trial period via your Subscriptions settings.</p>
+				</li>
+				<li>
+					<div>
+						<a href="#">Can I change my plan anytime?</a>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+					</div>
+					<p class='hidden'>Yes, you can upgrade, downgrade or cancel your plan at any time via your Subscription settings.</p>
+				</li>
+				<li>
+					<div>
+						<a href="#">Is my Bonsai subscription tax deductible?</a>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 
+						1.414L12 16.414l5.707-5.707z"/></svg>
+					</div>
+					<p class='hidden'>Yes, the IRS allows for tax deduction for software you use to run your business. Bonsai's expense tracking even automatically categorizes your subscription as a deductible software expense.</p>
+				</li>
+				<li>
+					<div>
+						<a href="#">What is your refund policy?</a>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+					</div>
+					<p class='hidden'>If you contact us within two weeks of being charged for your subscription, we will be happy to issue a refund for you. Beyond those two weeks, you will need to cancel or modify the subscription from the Subscriptions tab in Settings to avoid future charges, but refunds will not be issued. This applies to both monthly and annual plans.</p>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<div>
+				<section>
+					<h6>product</h6>
+					<ul>
+						<li>proposals</li>
+						<li>contracts</li>
+						<li>invoicing</li>
+						<li>client CRM</li>
+						<li>time tracking</li>
+						<li>task tracking</li>
+						<li>forms</li>
+						<li>accounting</li>
+						<li>bonsai tax</li>
+						<li>bonsai cash</li>
+					</ul>
+					<ul>
+						<li>pricing</li>
+						<li>bonsai reviews</li>
+					</ul>
+				</section>
+				<section>
+					<h6>free resources</h6>
+					<ul>
+						<li>freelance resources</li>
+						<li>freelance blog by bonsai</li>
+						<li>how to write a contract</li>
+						<li>online signature maker</li>
+						<li>self-employed taxes hub</li>
+						<li>self-employed tax calculator</li>
+						<li>self-employed tax deductions</li>
+					</ul>
+					<ul>
+						<li>
+							<a href='#'>invoice templates</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+						<li>
+							<a href='#'>proposal templates</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+						<li>
+							<a href='#'>contract templates</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+						<li>
+							<a href='#'>agreement templates</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+						<li>
+							<a href='#'>scope of work templates</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+						<li>
+							<a href='#'>quate templates</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+						<li>credit note templates</li>
+						<li>estimate templates</li>
+					</ul>
+				</section>
+				<section>
+					<h6>bonsai</h6>
+					<ul>
+						<li>about</li>
+						<li>careers</li>
+						<li>supports</li>
+						<li>linkedin</li>
+						<li>twitter</li>
+						<li>privacy policy</li>
+						<li>legal</li>
+					</ul>
+					<ul>
+						<li>affiliates</li>
+						<li>write for us</li>
+					</ul>
+					<ul>
+						<li>
+							<a href='#'>comparisons</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"/></svg>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<div>
+				<ul>
+					<span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="4.983" cy="5.009" r="2.188"/><path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"/></svg>
+					</span>
+					<span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 0 0 5.001-1.721 4.036 4.036 0 0 1-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 0 1-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 0 1-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 0 0 8.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 0 1 4.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 0 0 2.556-.973 4.02 4.02 0 0 1-1.771 2.22 8.073 8.073 0 0 0 2.319-.624 8.645 8.645 0 0 1-2.019 2.083z"/></svg>
+					</span>
+				</ul>
+				<ul>
+					<a>© Bonsai 2023</a>
+					<a>FDIC insured up to $250k</a>
+				</ul>
+			</div>
+		</footer>
+   </div>
+<script src="./index.js"></script>
+</body>
+</html>
